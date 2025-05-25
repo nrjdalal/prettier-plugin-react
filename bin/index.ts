@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util"
-import { test } from "~/bin/commands/test"
 import { author, name, version } from "~/package.json"
 
 const helpMessage = `Version:
@@ -29,14 +28,6 @@ const parse: typeof parseArgs = (config) => {
 
 const main = async () => {
   try {
-    const args = process.argv.slice(2)
-
-    switch (args[0]) {
-      case "test":
-        test(args.slice(1))
-        break
-    }
-
     const { positionals, values } = parse({
       allowPositionals: true,
       options: {
@@ -44,8 +35,6 @@ const main = async () => {
         version: { type: "boolean", short: "v" },
       },
     })
-
-    if (!args.length) throw new Error(helpMessage)
 
     if (!positionals.length) {
       if (values.version) {
@@ -58,7 +47,6 @@ const main = async () => {
       }
     }
 
-    console.error(`unknown command: ${args.join(" ")}`)
     process.exit(0)
   } catch (err: any) {
     console.error(helpMessage)
