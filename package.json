@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-react",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "Prettier plugin for React",
   "keywords": [
     "prettier",
@@ -17,35 +17,47 @@
     "url": "https://nrjdalal.com"
   },
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": "./dist/bin/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
+    "bin": "tsup && node dist/bin/index.js",
     "build": "tsup",
     "dev": "tsup --watch",
-    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then npx simple-git-hooks; fi",
-    "publish:latest": "NODE_ENV=production changeset publish"
+    "prepare": "npx simple-git-hooks"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
     "commit-msg": "npx commitlint --edit $1"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown",
+    "package.json": "sort-package-json"
+  },
+  "prettier": {
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports"
+    ],
+    "semi": false
+  },
   "devDependencies": {
-    "@babel/parser": "^7.26.7",
-    "@babel/preset-typescript": "^7.26.0",
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.10",
-    "@commitlint/cli": "^19.6.0",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
-    "@types/node": "^22.10.1",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.4.2",
-    "simple-git-hooks": "^2.11.1",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@types/node": "^22.15.21",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.5.3",
+    "simple-git-hooks": "^2.13.0",
+    "sort-package-json": "^3.2.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   }
 }
