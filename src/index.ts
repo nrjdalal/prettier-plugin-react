@@ -3,9 +3,9 @@ import { visit } from "ast-types"
 import { AstPath, Doc, Options, Plugin } from "prettier"
 import { parsers as babelParsers } from "prettier/parser-babel"
 
-// Hard-coded attribute order; no config needed
 const defaultOrder: string[] = [
   "id",
+  "key",
   "className",
   "href",
   "target",
@@ -16,12 +16,6 @@ const defaultOrder: string[] = [
   "height",
 ]
 
-/**
- * Reorders one node's JSX attributes in-place:
- *  - Splits named attrs into segments between spreads
- *  - Sorts each segment by the defaultOrder, then alphabetically
- *  - Re-emits spreads in their original positions
- */
 function sortJSXAttributesOnNode(node: any): void {
   const order = defaultOrder
   const attrs: any[] = node.attributes
@@ -38,14 +32,14 @@ function sortJSXAttributesOnNode(node: any): void {
       byName.set(name, bucket)
     }
     const sortedSegment: any[] = []
-    // 1) ordered keys
+
     for (const key of order) {
       if (byName.has(key)) {
         sortedSegment.push(...byName.get(key)!)
         byName.delete(key)
       }
     }
-    // 2) remaining alpha
+
     const rest = Array.from(byName.values()).flat()
     rest.sort((a, b) => a.name.name.localeCompare(b.name.name))
     sortedSegment.push(...rest)
