@@ -1,18 +1,3 @@
-## Clone this template
+# What's to come?
 
-```bash
-npx gitpick@latest nrjdalal/the-typescript-starter
-```
-
-## If you wish to run a server
-
-```bash
-npm i -D concurrently nodemon
-npx fx '({
-  ...this,
-  scripts: {
-    ...this.scripts,
-    "dev": "tsup && concurrently \"tsup --watch\" \"nodemon dist/index.js\""
-  }
-})' package.json >package.tmp.json && mv package.tmp.json package.json
-```
+Tired of unordered attributes in your React `.jsx`/`.tsx` files? We're working on a solution! This plugin will soon be active and launched. In the meantime, you can star the repository on [GitHub](https://github.com/nrjdalal/prettier-plugin-react) to stay updated on the release.
