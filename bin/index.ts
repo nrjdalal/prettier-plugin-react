@@ -101,9 +101,9 @@ const main = async () => {
           })
         }
 
-        for (const attr of attributes) {
-          attr.remove()
-        }
+        // for (const attr of attributes) {
+        //   attr.remove()
+        // }
 
         for (const group of groupedAttributes) {
           for (const structure of group) {
