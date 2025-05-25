@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-react",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.7",
   "description": "Prettier plugin for React",
   "keywords": [
     "prettier",
@@ -18,8 +18,8 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "main": "./dist/index.js",
