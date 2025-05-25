@@ -71,16 +71,11 @@ const main = async () => {
           attr.getStructure(),
         )
 
-        const groupedAttributes: Array<
-          Array<
-            JsxAttributeLike["getStructure"] extends () => infer T ? T : never
-          >
-        > = []
+        const groupedAttributes = []
 
         for (const [i, structure] of attributeStructures.entries()) {
           const kind = attributes[i].getKind()
           const lastGroup = groupedAttributes[groupedAttributes.length - 1]
-
           if (
             lastGroup &&
             attributes[groupedAttributes.flat().length - 1].getKind() === kind
@@ -100,18 +95,7 @@ const main = async () => {
             return nameA.localeCompare(nameB)
           })
         }
-
-        for (const group of groupedAttributes) {
-          for (const structure of group) {
-            element.addAttribute(structure)
-          }
-        }
       }
-
-      console.log(
-        `Processed file: ${sourceFile.getFilePath()}`,
-        sourceFile.getText(),
-      )
     }
 
     process.exit(0)
