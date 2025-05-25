@@ -1,12 +1,15 @@
 {
-  "name": "the-typescript-starter",
-  "version": "0.1.0",
-  "description": "the-typescript-starter",
-  "keywords": [],
-  "homepage": "https://github.com/nrjdalal/the-typescript-starter#readme",
-  "bugs": "https://github.com/nrjdalal/the-typescript-starter/issues",
-  "repository": "nrjdalal/the-typescript-starter",
-  "funding": "https://github.com/sponsors/nrjdalal",
+  "name": "prettier-plugin-react",
+  "version": "0.0.1-alpha.7",
+  "description": "Prettier plugin for React",
+  "keywords": [
+    "prettier",
+    "plugin",
+    "react"
+  ],
+  "homepage": "https://github.com/nrjdalal/prettier-plugin-react#readme",
+  "bugs": "https://github.com/nrjdalal/prettier-plugin-react/issues",
+  "repository": "nrjdalal/prettier-plugin-react",
   "license": "MIT",
   "author": {
     "name": "Neeraj Dalal",
@@ -54,6 +57,7 @@
     "prettier": "^3.5.3",
     "simple-git-hooks": "^2.13.0",
     "sort-package-json": "^3.2.1",
+    "ts-morph": "^26.0.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   }
