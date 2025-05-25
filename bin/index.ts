@@ -111,6 +111,8 @@ const main = async () => {
           }
         }
       }
+
+      sourceFile.saveSync()
     }
 
     process.exit(0)
