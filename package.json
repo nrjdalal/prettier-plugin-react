@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-react",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.5",
   "description": "Prettier plugin for React",
   "keywords": [
     "prettier",
@@ -16,10 +16,13 @@
     "email": "admin@nrjdalal.com",
     "url": "https://nrjdalal.com"
   },
-  "type": "module",
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "bin": "./dist/bin/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
   "files": [
     "dist"
   ],
