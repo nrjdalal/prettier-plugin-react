@@ -101,10 +101,6 @@ const main = async () => {
           })
         }
 
-        // for (const attr of attributes) {
-        //   attr.remove()
-        // }
-
         for (const group of groupedAttributes) {
           for (const structure of group) {
             element.addAttribute(structure)
@@ -112,7 +108,10 @@ const main = async () => {
         }
       }
 
-      sourceFile.saveSync()
+      console.log(
+        `Processed file: ${sourceFile.getFilePath()}`,
+        sourceFile.getText(),
+      )
     }
 
     process.exit(0)
