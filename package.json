@@ -49,6 +49,7 @@
     "semi": false
   },
   "dependencies": {
+    "tinyglobby": "^0.2.13",
     "ts-morph": "^26.0.0"
   },
   "devDependencies": {
