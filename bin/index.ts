@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util"
 import { author, name, version } from "~/package.json"
+import { Project } from "ts-morph"
 
 const helpMessage = `Version:
   ${name}@${version}
@@ -28,6 +29,10 @@ const parse: typeof parseArgs = (config) => {
 
 const main = async () => {
   try {
+    const project = new Project()
+
+    console.log(project)
+
     const { positionals, values } = parse({
       allowPositionals: true,
       options: {
