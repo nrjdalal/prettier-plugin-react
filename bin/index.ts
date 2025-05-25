@@ -2,7 +2,7 @@
 import path from "node:path"
 import { parseArgs } from "node:util"
 import { author, name, version } from "~/package.json"
-import { JsxAttributeLike, Project, SyntaxKind } from "ts-morph"
+import { Project, SyntaxKind } from "ts-morph"
 
 const helpMessage = `Version:
   ${name}@${version}
@@ -95,7 +95,29 @@ const main = async () => {
             return nameA.localeCompare(nameB)
           })
         }
+
+        // @ts-ignore
+        element.set({ attributes: groupedAttributes.flat() })
+
+        // // remove existing attributes
+        // for (const attr of attributes) {
+        //   if (
+        //     attr.getKind() === SyntaxKind.JsxAttribute ||
+        //     attr.getKind() === SyntaxKind.JsxSpreadAttribute
+        //   ) {
+        //     attr.remove()
+        //   }
+        // }
+
+        // // add sorted attributes back
+        // for (const group of groupedAttributes) {
+        //   for (const structure of group) {
+        //     element.addAttribute(structure)
+        //   }
+        // }
       }
+
+      sourceFile.saveSync()
     }
 
     process.exit(0)
